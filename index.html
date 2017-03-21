@@ -1,0 +1,88 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+	    <script src="https://d3js.org/d3.v3.min.js"></script>
+	</head>
+
+	<body>
+    
+                <svg id="hw01" width="400" height="200"></svg>
+                <br>
+                <svg id="hw02" width="400" height="300"></svg>
+                <br>
+                <svg id="hw03" width="400" height="300"></svg>
+                <br>
+                <div id="hw04"></div>
+    <script>
+        d3.select("#hw01").append("circle").attr({"cx":150,"cy":120,"r":15});
+        d3.select("#hw01").append("rect").attr({"x":160,"y":60,"width":5,"height":63});
+        d3.select("#hw01").append("line").attr({"x1":30,"y1":60,"x2":280,"y2":60 ,"stroke":"black", "stroke-width":2}); d3.select("#hw01").append("line").attr({"x1":30,"y1":85,"x2":280,"y2":85 ,"stroke":"black", "stroke-width":2}); d3.select("#hw01").append("line").attr({"x1":30,"y1":110,"x2":280,"y2":110 ,"stroke":"black", "stroke-width":2}); d3.select("#hw01").append("line").attr({"x1":30,"y1":135,"x2":280,"y2":135 ,"stroke":"black", "stroke-width":2});
+        d3.select("#hw01").append("line").attr({"x1":30,"y1":160,"x2":280,"y2":160 ,"stroke":"black", "stroke-width":2});
+        d3.select("#hw01").append("line").attr({"x1":30,"y1":185,"x2":280,"y2":185 ,"stroke":"black", "stroke-width":2});
+        d3.select("#hw01").append("text").attr({"x":140,"y":185 ,"font-size":30, "font-family":"arial"}).text('A');
+    </script>
+   
+   
+    <script>
+        for (var i=0;i<20;i=i+1){
+            var num = random(20,300);
+            d3.select("#hw02").append("rect").attr({ x: 10, y: 10+12*i, width: num, height: 10, fill: "red" });
+            d3.select("#hw02").append("text").attr({x:num+15,y:10+12*i+10,"font-size":12}).text(num);
+        }
+        function random(N,M){
+            return Math.ceil(Math.random()*(M-N)+N);
+        }
+    </script>
+        
+    <script>
+        var last_num=0
+        for (var i=0;i<20;i=i+1){
+            var num = random(20,300);
+            d3.select("#hw03").append("circle").attr({cx:10+num,cy:10+12*i+5,"r":3,fill:"red"});
+            d3.select("#hw03").append("text").attr({x:num+15,y:10+12*i+10,"font-size":12}).text(num);
+            d3.select("#hw03").append("line").attr({x1:10+last_num,y1:10+12*(i-1)+5,x2:10+num,y2:10+12*i+5,stroke:"grey"});
+            last_num=10+num;
+        }
+        d3.select("#hw03").append("line").attr({x1:10+last_num,y1:10+12*(19)+5,x2:10,y2:10+12*(20)+5,stroke:"grey"});
+    </script>
+    <script>
+        var arr=[85,68,99,49,77,82];
+        var div=d3.select("body");
+        for (var i=0;i<arr.length;i++){
+            if (arr[i]<60){
+                div.append("div").text(arr[i]).style({color: "red"});
+            }else if(arr[i]<80){
+               div.append("div").text(arr[i]).style({color: "blue"});
+            }else{
+              div.append("div").text(arr[i]);
+            }
+        }
+        
+    </script>
+    <script>
+    var myShoes={
+         "brand":"Nike",
+         "forFemale":false,
+         "price": 1000,
+         "size":13,
+         "color":["white","black"]
+     };
+    var prevShoes={
+            "brand":"addias",
+            "forFemale":false,
+            "size":10,
+            "color":["white","red"]
+    };
+    myShoes.prevShoes=prevShoes;
+    myShoes.discount=function(num){
+        return Math.floor(this.price*num/10);
+    }
+    
+    </script>
+    
+	</body>
+</html>
